@@ -1,0 +1,99 @@
+{% extends 'home.html' %}
+{% block title %}
+  Register
+{% endblock %}
+
+{% block content %}
+  {% if messages %}
+    {% for message in messages %}
+      <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+        <strong>{{ message }}</strong> <!-- Dynamically show the message -->
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    {% endfor %}
+  {% endif %}
+  <form method="POST" action="" class="container mt-5 p-4 border rounded shadow-lg bg-white animated-form" style="max-width: 420px;">
+    {% csrf_token %}
+    <h2 class="text-center mb-4 fw-bold text-gradient">Register</h2>
+
+    <div class="mb-3">
+      <label for="fname" class="form-label fw-semibold">First Name</label>
+      <input type="text" name="fname" id="fname" class="form-control input-glow" placeholder="Enter First Name" required />
+    </div>
+
+    <div class="mb-3">
+      <label for="lname" class="form-label fw-semibold">Last Name</label>
+      <input type="text" name="lname" id="lname" class="form-control input-glow" placeholder="Enter Last Name" required />
+    </div>
+
+    <div class="mb-3">
+      <label for="address" class="form-label fw-semibold">Address</label>
+      <input type="text" name="address" id="address" class="form-control input-glow" placeholder="Enter Address" required />
+    </div>
+
+    <div class="mb-3">
+      <label for="email" class="form-label fw-semibold">E-Mail</label>
+      <input type="email" name="email" id="email" class="form-control input-glow" placeholder="Enter Email" required />
+    </div>
+
+    <button type="submit" class="btn w-100 btn-gradient btn-hover">Register</button>
+  </form>
+
+  <!-- Custom CSS -->
+  <style>
+    /* Smooth Shadow Form */
+    .animated-form {
+      transition: 0.4s ease-in-out;
+      border-radius: 12px;
+      padding: 35px;
+      box-shadow: 0px 5px 25px rgba(0, 0, 0, 0.15);
+    }
+    
+    /* Scale Effect on Hover */
+    .animated-form:hover {
+      transform: scale(1.03);
+      box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.25);
+    }
+    
+    /* Gradient Text */
+    .text-gradient {
+      background: linear-gradient(45deg, #007bff, #6610f2);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    
+    /* Input Glow Effect */
+    .input-glow {
+      border: 2px solid #ddd;
+      border-radius: 10px;
+      transition: 0.3s ease-in-out;
+      padding: 10px;
+    }
+    
+    .input-glow:focus {
+      border-color: #6610f2;
+      box-shadow: 0px 0px 12px rgba(102, 16, 242, 0.5);
+    }
+    
+    /* Gradient Button */
+    .btn-gradient {
+      background: linear-gradient(45deg, #007bff, #6610f2);
+      color: white;
+      font-weight: bold;
+      border-radius: 8px;
+      padding: 12px;
+      transition: all 0.4s ease-in-out;
+      border: none;
+    }
+    
+    /* Button Hover Effect */
+    .btn-hover:hover {
+      background: linear-gradient(45deg, #6610f2, #007bff);
+      box-shadow: 0px 5px 15px rgba(102, 16, 242, 0.3);
+      transform: translateY(-2px);
+    }
+  </style>
+
+  <!-- Bootstrap CDN (Include this if not already in your project) -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+{% endblock %}
